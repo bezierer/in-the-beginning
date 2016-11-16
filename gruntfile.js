@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 		 * Get package meta data
 		 */
 		pkg: grunt.file.readJSON('package.json'),
+
 		/**
 		* Bower Copy
 		*/
@@ -59,6 +60,19 @@ module.exports = function(grunt) {
 			}
 		},
 		/**
+		 * BrowserSync
+		 */
+		browserSync: {
+		    dev: {
+		        bsFiles: {
+		            src : 'style.css'
+		        },
+		        options: {
+		            proxy: "yoursite.dev"
+		        }
+		    }
+		},
+		/**
 		 * CSSJanus
 		 */
 		cssjanus: {
@@ -91,7 +105,11 @@ module.exports = function(grunt) {
 			}
 		}
 	});
-
+	/**
+	* BrowserSync task
+	* Run `grunt browserSync` on the command line
+	*/
+	grunt.loadNpmTasks('grunt-browser-sync');
 	/**
 	 * Default task
 	 * Run `grunt` on the command line
